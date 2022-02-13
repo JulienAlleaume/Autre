@@ -1,0 +1,25 @@
+html {background-color:#ffffff;}
+body {color: white; }
+h4 {color: blue;}
+.text-droite {
+    text-align: right;
+}
+
+.bleu {
+    color: blue;
+}
+.div-1 {
+    background-color: #5cb7e7;
+}
+
+.div-2 {
+  background-color: #808284;
+  border-radius: 0 0 0 40px;
+}
+
+.div-3 {
+  background-color: #003f69;
+}
+.image-droite {
+    float: left;
+}

@@ -1,0 +1,15 @@
+Routeur 1 : 
+Config t
+(configuration ip des deux interface Classique)
+Router ospf 1 (id processus)
+Network 196.168.0.0 0.255.255.255 area 0
+Network 184.115.15.0 0.0.0.3 area 0
+Write mem (écris la mémoire / sauvegarde)
+
+Routeur 2 :
+Config t
+(configuration ip des deux interface Classique)
+Router ospf 1 
+Network 196.168.0.0 0.255.255.255 area 0
+Network 184.115.15.0 0.0.0.3 area 0
+Wr mem

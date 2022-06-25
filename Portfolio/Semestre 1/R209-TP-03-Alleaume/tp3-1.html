@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TP3-1 OpenStreetMap</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="tp3.css"/>
+  <link rel="stylesheet" href="leaflet-1.7.1/leaflet.css"/>
+  <!--script src="jquery-3.6.0.min.js"></script-->
+</head>
+<body>
+  <h1>Carte de la france</h1>
+  <div class="flex">
+    <div id="map" class="box"></div>
+  </div>
+  <script src="leaflet-1.7.1/leaflet.js"></script>
+  <script type="text/javascript">
+  var béziers=new L.latLng(43.346871392739374, 3.2221697886236926);// 48°51'31" N et 2°17'39"
+  let pts=[
+  {loc: new L.latLng(43.341636,3.217471), msg: "La statue de Paul Riquet"},
+  {loc: new L.latLng(43.343938,3.228736), msg: "Les arènes"},
+  {loc: new L.latLng(43.353019,3.227778), msg: "Le chateau d'eau"}
+  ];
+  
+  var redMark = L.icon({
+    iconUrl: "cbMkrRed.png",
+    iconSize: [39.55, 64],
+    iconAnchor: [20, 30],
+    popupAnchor: [0, -10]
+})
+  var map=null;
+  function initMap() {
+
+    let mapOptions={center: béziers, zoom: 15};
+    let layerOptions={attribution: '(c) OpenStreetMap France', minZoom: 1, maxZoom: 20};
+    map=new L.map('map',mapOptions);
+    let layer=new L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',layerOptions);
+    map.addLayer(layer);}
+  
+  window.onload=function(){
+    initMap();
+
+    map.on('click', function(evt){
+      var long = (evt.latlng.lat);
+      var late = (evt.latlng.lng);
+    console.log(late,long)});
+
+    var Clickpoint = new L.marker([late,long],{draggable: true, autoPan: true,}).addTo(map).bindPopup(late,long);
+    
+    var marker = L.marker([43.346871392739374, 3.2221697886236926]).addTo(map);
+    marker.bindPopup("<p IUT Béziers><b>IUT Béziers</b><img src='logoIUT-100x50.png' align='center'><br> <a href='https://www.iutbeziers.fr/'>Liens IUT Béziers</a> </p>");
+
+    for (pt in pts){
+    var marqueur = L.marker([pts[pt]["loc"]["lat"], pts[pt]["loc"]["lng"]], {icon: redMark}).addTo(map).bindPopup("<p>"+pts[pt]["msg"]+"</p>");
+    }
+  }
+  
+  
+</script>
+</body>
+</html>
